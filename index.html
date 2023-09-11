@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        body {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            z-index: 20;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            height: 50vh;
+            background-color: red;
+            color: white;
+            position: relative;
+        }
+        .container.white-overlay::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F3F3F3;
+            z-index: 10;
+        }
+
+        .svgWave {
+            display: none;
+        }
+
+        .svgWave2 {
+    position: absolute;
+    bottom: -2500px;
+    left: 170px;  /* Expanded to left by 50% of container width */
+    width: 100%; /* Double the container width */
+    height: 250%;
+    z-index: 10;
+    display: none;
+}
+.svgWave3 {
+    position: absolute;
+    bottom: -2500px;
+    left: -20px;  /* Expanded to left by 50% of container width */
+    width: 100%; /* Double the container width */
+    height: 250%;
+    z-index: 10;
+    display: none;
+}
+
+        .box {
+            width: 100%;
+            height: 50vh;
+            background-color: green;
+            color: white;
+            transition: all 2s ease-in;
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                display: none;
+            }
+
+            .container {
+                height: 100vh;
+            }
+
+            .svgWave {
+                display: block;
+                position: absolute;
+                bottom: -5px;
+                left: 125px;
+                right: 0;
+            }
+        }
+
+        @keyframes waveMove {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.4);
+            }
+        }
+        @keyframes waveMove2 {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.4);
+            }
+        }
+        .svgWave2.animate {
+            animation: waveMove 2s forwards;
+        }
+        .svgWave3.animate {
+            animation: waveMove2 2s forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Test</h1>
+        <div class="svgWave">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="250%" viewBox="0 0 360 41" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M363 140.191L363.001 978L-5 983.001L-4.99997 159C11.7623 159 26.968 150.828 43.9645 141.693C65.4989 130.119 89.9081 117 124 117C207.367 117 234.233 84.0805 259.321 53.34C270.947 39.0944 282.192 25.3167 298.5 15.5C299.102 15.1376 299.73 14.8676 300.382 14.6851C307.309 11.6669 314.512 12.4289 321.58 13.1767C326.981 13.7481 332.304 14.3112 337.364 13.173C344.7 11.5108 349.558 8.3556 353.878 5.54983C361.68 0.482578 367.727 -3.4448 383.443 4.62152C424.73 25.8111 438.171 64.2889 418.877 101.881C406.15 126.678 385.814 139.057 363 140.191Z"
+                    fill="#F3F3F3" />
+            </svg>
+        </div>
+        <svg class="svgWave2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M363 140.191L363.001 978L-5 983.001L-4.99997 159C11.7623 159 26.968 150.828 43.9645 141.693C65.4989 130.119 89.9081 117 124 117C207.367 117 234.233 84.0805 259.321 53.34C270.947 39.0944 282.192 25.3167 298.5 15.5C299.102 15.1376 299.73 14.8676 300.382 14.6851C307.309 11.6669 314.512 12.4289 321.58 13.1767C326.981 13.7481 332.304 14.3112 337.364 13.173C344.7 11.5108 349.558 8.3556 353.878 5.54983C361.68 0.482578 367.727 -3.4448 383.443 4.62152C424.73 25.8111 438.171 64.2889 418.877 101.881C406.15 126.678 385.814 139.057 363 140.191Z"
+                fill="#F3F3F3" />
+        </svg>
+        <svg class="svgWave3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M363 140.191L363.001 978L-5 983.001L-4.99997 159C11.7623 159 26.968 150.828 43.9645 141.693C65.4989 130.119 89.9081 117 124 117C207.367 117 234.233 84.0805 259.321 53.34C270.947 39.0944 282.192 25.3167 298.5 15.5C299.102 15.1376 299.73 14.8676 300.382 14.6851C307.309 11.6669 314.512 12.4289 321.58 13.1767C326.981 13.7481 332.304 14.3112 337.364 13.173C344.7 11.5108 349.558 8.3556 353.878 5.54983C361.68 0.482578 367.727 -3.4448 383.443 4.62152C424.73 25.8111 438.171 64.2889 418.877 101.881C406.15 126.678 385.814 139.057 363 140.191Z"
+                fill="#F3F3F3" />
+        </svg>
+    </div>
+    <div class="box">
+        <h1>Test 2</h1>
+    </div>
+
+    <script>
+let startY;
+
+// For desktop users
+document.querySelector(".svgWave").addEventListener("mousedown", function(event) {
+    startY = event.clientY;
+});
+
+document.querySelector(".svgWave").addEventListener("mouseup", function(event) {
+    let endY = event.clientY;
+    handleSwipe(startY, endY);
+});
+
+// For mobile users
+document.querySelector(".svgWave").addEventListener("touchstart", function(event) {
+    startY = event.touches[0].clientY;
+});
+
+document.querySelector(".svgWave").addEventListener("touchend", function(event) {
+    let endY = event.changedTouches[0].clientY;
+    handleSwipe(startY, endY);
+});
+
+function handleSwipe(start, end) {
+    // Check if the swipe/drag distance is more than 50 pixels upwards
+    if (start - end > 50) {
+        activateWaveAnimation();
+    }
+}
+
+function activateWaveAnimation() {
+    let svgWave2 = document.querySelector(".svgWave2");
+    svgWave2.style.display = "block";
+    svgWave2.classList.add("animate");
+    let svgWave3 = document.querySelector(".svgWave3");
+    svgWave3.style.display = "block";
+    svgWave3.classList.add("animate");
+    svgWave2.addEventListener("animationend", function() {
+        let container = document.querySelector(".container");
+        container.style.display = "none";
+        let box = document.querySelector(".box");
+        box.style.display = "block";
+    });
+}
+
+
+    </script>
+</body>
+
+</html>
